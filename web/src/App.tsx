@@ -6,6 +6,7 @@ import { CreateAdBanner } from './components/CreateAdBanner';
 
 import './styles/main.css';
 import logoImg from './assets/logo.svg';
+import { Input } from './components/Form/Input';
 
 interface Game {
   id: string;
@@ -52,38 +53,78 @@ function App() {
             <Dialog.Title className='text-3xl text-white'>Publique um anúncio</Dialog.Title>
 
             
-              <form className='mt-8'>
+              <form className='mt-8 flex flex-col gap-4'>
                 <div className='flex flex-col gap-2'>
                   <label className='font-semibold' htmlFor='game'> Qual o game? </label>
-                  <input id='game' placeholder='Selecione o seu game' />
+                  <Input id='game' placeholder='Selecione o seu game' />
                 </div>
 
-                <div>
+                <div className='flex flex-col gap-2'>
                  <label htmlFor='game'> Qual o seu nome? </label>
-                 <input type="number" placeholder='Como te chamam dentro do game' className='bg-zinc-900 py-3 px-4 rounded text-sm placeholder:text-zinc-500' />
+                 <Input id="game" placeholder='Selecione o game que deseja jogar' />
                 </div>
                 
-                <div>
-                  <div>
+                <div className='grid grid-cols-2 gap-6'>
+                  <div className='flex flex-col gap-2'>
                    <label htmlFor='yearsPlaying'> Joga há qunatos anos? </label>
-                   <input id='idYearsPlaying' placeholder='Tudo bem ser zero' />
+                   <Input id='idYearsPlaying' placeholder='Tudo bem ser zero' />
                   </div>
 
-                  <div>
+                  <div className='flex flex-col gap-2'>
                    <label htmlFor='discord'> Qual o seu discord? </label>
-                   <input id='discord' type="text" placeholder='Usuario' />
+                   <Input id='discord' type="text" placeholder='Usuario' />
                   </div>
                 </div>
-                <div>
-                  <div>
+                <div className='flex gap-6'>
+                  <div className='flex flex-col gap-2'>
                     <label htmlFor='weekDays'> Quando costuma jogar? </label>
+                    <div className='grid grid-cols-4 gap-2'>
+                      <button 
+                        title='Domingo'
+                        className='w-8 h-8 rounded bg-zinc-900'
+                      >
+                        D
+                      </button>
+                      <button 
+                        title='Segunda'
+                        className='w-8 h-8 rounded bg-zinc-900'
+                      >
+                        S
+                      </button>
+                      <button
+                        className='w-8 h-8 rounded bg-zinc-900' 
+                        title='Terça'>T
+                       
+                      </button>
+                      
+                      <button
+                        className='w-8 h-8 rounded bg-zinc-900' 
+                        title='Quarta'>Q
+                      
+                      </button>
+                      <button
+                      className='w-8 h-8 rounded bg-zinc-900' 
+                      title='Quinta'>Q
+                      
+                      </button>
+                      <button 
+                        className='w-8 h-8 rounded bg-zinc-900'
+                        title='Sexta'>S
+                        
+                      </button>
+                      
+                      <button
+                        className='w-8 h-8 rounded bg-zinc-900' 
+                        title='Sábado'>                       S
+                      </button>
+                    </div>
                   </div>
 
-                  <div>
+                  <div className='flex flex-col gap-2 flex-1'>
                     <label htmlFor='discord'> Qual horario do dia? </label>
-                    <div>
-                      <input type="time" id="hoursStart" placeholder='De' />
-                      <input type="time" id="hoursEnd" placeholder='Ate' />
+                    <div className='grid grid-cols-2 gap-2'>
+                      <Input type="time" id="hoursStart" placeholder='De' />
+                      <Input type="time" id="hoursEnd" placeholder='Ate' />
                     </div>
                   </div>
                 </div>   
