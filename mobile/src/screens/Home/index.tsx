@@ -6,19 +6,28 @@ import { styles } from './styles';
 import logoImg from '../../assets/logo-nlw-esports.png';
 import { Heading } from '../../components/Heading';
 import { GameCard, GameCardProps } from '../../components/GameCard';
-import { GAMES } from '../../utils/games';
+import { SafeAreaView } from 'react-native-safe-area-context';
+import { Background } from '../../components/Background';
+import { useNavigation } from '@react-navigation/native';
 
 
 export function Home() {
+  const navigation = useNavigation();
+
   useEffect( () => {
     fetch('http://192.168.1.107:3330/games')
     .then(response => response.json())
     .then(data => setGames(data))
   }, [])
 
+  function handleOpenGame({id, bannerUrl, title}: GameCardProps){
+    navigation.navigate('game', {id, bannerUrl, title});
+  }
+
   const [games, setGames] = useState<GameCardProps[]>([]);
   return (
-    <View style={styles.container}>
+   <Background> 
+    <SafeAreaView style={styles.container}>
       <Image 
         source={logoImg}
         style={styles.logo}
@@ -35,6 +44,7 @@ export function Home() {
         renderItem={ ({item}) => (
           <GameCard 
             data={item}
+            onPress={() => handleOpenGame(item)}
           />
          )}
          horizontal
@@ -42,6 +52,7 @@ export function Home() {
          contentContainerStyle={styles.contentList}
       />
      
-    </View>
+    </SafeAreaView>
+   </Background>  
   );
 }
