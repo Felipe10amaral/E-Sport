@@ -70,8 +70,13 @@ export function Games() {
         renderItem={ ({item}) => (
           <DuoCard 
             data={duo[0]}
+            onConnect={() => {}}
           />
         )}
+        horizontal
+        style={styles.containerList}
+          showsHorizontalScrollIndicator={false}
+        contentContainerStyle={styles.contentList}
       />
     </SafeAreaView>
    </Background> 
